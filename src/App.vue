@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+        MUSTAGRAM
+    </div>
 </template>
 
 <script>
