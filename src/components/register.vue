@@ -1,26 +1,27 @@
 <template>
-     <div class="login">
+  <div class="register">
       <form>
-         <h3 id="logo">login</h3> 
+         <h3 id="logo">register</h3> 
+        <label for="" class="name-label">name</label>
+        <input type="text" class="input-register" placeholder="input your name" required v-model="name">
         <label for="" class="name-label">email</label>
-        <input type="email" class="input-login" placeholder="input your email" required>
+        <input type="email" class="input-register" placeholder="input your email" required>
         <label for="" class="name-label">password</label>
-        <input type="password" class="input-login" placeholder="input your password" required>
-        <a class="forgot" href="#">register</a>
-        <input type="submit" name="submit" value="Log In" />
-       
+        <input type="password" class="input-register" placeholder="input your password" required>
+        <a class="register" href="#">Forgot Password?</a>
+        <input type="submit" name="submit" value="Register" />
       </form>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "login"
-    }
+export default {
+    // data():
+}
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap);
 
 #logo {
 	margin-top:10;
@@ -93,6 +94,7 @@ form input[type="password"]:focus {
 
 input[type=submit] {
 	padding:15px 50px;
+    float: right;
 	width:auto;
 	background:#636e72;
 	border:none;
@@ -116,7 +118,7 @@ input[type="submit"]:active {
 }
 
 .forgot,
-.login {
+.register {
 	margin:10px;
 	float:left;
 	clear:left;
@@ -126,7 +128,9 @@ input[type="submit"]:active {
 }
 
 .forgot:hover,
-.login:hover {
+.register:hover {
 	color:darkgray;
 }
+
+
 </style>

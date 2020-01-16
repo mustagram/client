@@ -1,12 +1,16 @@
 <template>
     <div>
-        MUSTAGRAM
+        <Container></Container>
     </div>
 </template>
 
 <script>
+import Container from "./components/container" 
     export default {
-        name: "App"
+        name: "App",
+        components: {
+           Container
+        }
     }
 </script>
 
