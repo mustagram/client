@@ -1,12 +1,10 @@
 <template>
-    <div>
-        MUSTAGRAM
-    </div>
+    
 </template>
 
 <script>
     export default {
-        name: "App"
+        name: "login"
     }
 </script>
 
