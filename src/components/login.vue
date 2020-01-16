@@ -6,7 +6,7 @@
         <input type="email" class="input-login" placeholder="input your email" required>
         <label for="" class="name-label">password</label>
         <input type="password" class="input-login" placeholder="input your password" required>
-        <a class="forgot" href="#">register</a>
+        <a class="forgot" href="#" @click="register">register</a>
         <input type="submit" name="submit" value="Log In" />
        
       </form>
@@ -15,7 +15,12 @@
 
 <script>
     export default {
-        name: "login"
+		name: "login",
+		methods: {
+			register(){
+				this.$emit("register")
+			}
+		}
     }
 </script>
 

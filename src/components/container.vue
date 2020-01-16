@@ -4,11 +4,8 @@
         <h1 class="font-logo-app">MustaGram</h1>
     </div>
       <div class="main-content">
-          <!-- <Register></Register> -->
-          <Login></Login>
-          <!-- <div>
-              terserah dah
-          </div> -->
+          <Register v-on:click="setVisible" v-if="!visible"></Register>
+          <Login v-on:register="setVisible" v-if="visible"></Login>
       </div>
   </div>
 </template>
@@ -18,6 +15,21 @@ import Register from "./register"
 import Login from "./login"
 export default {
         name: "App",
+        data(){
+            return {
+                visible: true,
+            }
+        },
+        methods:{
+            setVisible(){
+                if(!this.visible){
+                    this.visible = true
+                }
+                else {
+                    this.visible = false
+                }
+            }
+        },
         components: {
             Register,
             Login
@@ -37,6 +49,7 @@ export default {
 
 .font-logo-app {
     font-size: 100px;
+    color: #ecf1f3;
     font-family: 'Righteous', cursive;
     
 }
@@ -47,8 +60,8 @@ export default {
      height: 100vh;
     background-image: linear-gradient(
         to right bottom, 
-        #7ed56fc7, 
-        #28b485c0), 
+        #c8cec7c7, 
+        #949796c0), 
         url(../img/fron-image.jpg);
     background-size: cover;
     background-position: top;
