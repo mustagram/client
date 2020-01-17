@@ -1,58 +1,60 @@
 <template lang="html">
     <div>
-        <i class="plus link icon" @click="toggle"></i>
-        <sui-modal v-model="open">
-            <sui-modal-header>Select a Photo</sui-modal-header>
-            <sui-modal-content image>
-                <form class="w-100" v-on:submit.prevent="submitPost" enctype="multipart/form-data">
-                    <label>Photo Upload :
-                        <div class="field">
-                            <div class="ui input">
-                                <input type="file"
-                                       ref="file"
-                                       name="file"
-                                       @change="handleFileUpload"/>
-                                <sui-label>Maksimal 5 Mb</sui-label>
+        <form v-on:submit.prevent="submitPost" enctype="multipart/form-data">
+            <i class="plus link icon" @click="toggle"></i>
+            <sui-modal v-model="open" compact>
+                <sui-modal-header>Select a Photo</sui-modal-header>
+                <sui-modal-content image>
+                    <sui-form>
+                        <label>Photo Upload :
+                            <div class="field">
+                                <div class="ui input">
+                                    <input type="file"
+                                           ref="file"
+                                           name="file"
+                                           @change="handleFileUpload"/>
+                                    <sui-label>Maksimal 5 Mb</sui-label>
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                    <label>Title :
-                        <div class="field">
-                            <div class="ui input">
-                                <input type="text"
-                                       id="title"
-                                       placeholder="Title"
-                                       v-model="title"
-                                       size="100"
-                                       minlength="10"
-                                       maxlength="100"
-                                       required>
+                        </label>
+                        <label>Title :
+                            <div class="field">
+                                <div class="ui input">
+                                    <input type="text"
+                                           id="title"
+                                           placeholder="Title"
+                                           v-model="title"
+                                           size="50"
+                                           minlength="10"
+                                           maxlength="100"
+                                           required>
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                    <label>Description :
-                        <div class="field">
-                            <div class="ui input">
-                                <input type="text"
-                                       id="description"
-                                       placeholder="Description"
-                                       v-model="description"
-                                       size="100"
-                                       minlength="10"
-                                       maxlength="100"
-                                       required>
+                        </label>
+                        <label>Description :
+                            <div class="field">
+                                <div class="ui input">
+                                    <input type="text"
+                                           id="description"
+                                           placeholder="Description"
+                                           v-model="description"
+                                           size="50"
+                                           minlength="10"
+                                           maxlength="100"
+                                           required>
+                                </div>
                             </div>
-                        </div>
-                    </label>
+                        </label>
+                    </sui-form>
+                </sui-modal-content>
+                <sui-modal-actions>
                     <sui-button color="blue">Post !!</sui-button>
-                </form>
-            </sui-modal-content>
-            <sui-modal-actions>
-                <sui-button positive @click.native="toggle">
-                    OK
-                </sui-button>
-            </sui-modal-actions>
-        </sui-modal>
+                    <sui-button positive @click.native="toggle">
+                        Close
+                    </sui-button>
+                </sui-modal-actions>
+            </sui-modal>
+        </form>
     </div>
 </template>
 
@@ -74,7 +76,7 @@
                 this.open = !this.open;
             },
             handleFileUpload: function () {
-                this.featured_image = this.$refs.featured_image.files[0];
+                this.file = this.$refs.file.files[0];
 
             },
             submitPost: function () {
@@ -94,13 +96,9 @@
                         token: this.$cookies.get("token")
                     }
                 }).then(({data}) => {
-                    // this.$emit('clicked');
-                    // this.header = "Success Saving Data";
-                    // this.contentMsg = "Data successfully saved";
                     console.log(data);
+                    this.open = false
                 }).catch(err => {
-                    // this.header = "Error Saving Data";
-                    // this.contentMsg = "Data failed to save";
                     console.log({err})
                 });
             },
