@@ -1,13 +1,30 @@
 <template>
     <div class="register">
-        <form>
+        <message v-bind:header="header"
+                 v-bind:content="content"
+                 v-bind:color="color"
+                 v-bind:visibility="visibility"
+                 class="mesage-box"></message>
+        <form v-on:submit.prevent="registerUser">
             <h3 id="logo">register</h3>
             <label class="name-label">name</label>
-            <input type="text" class="input-register" placeholder="input your name" required v-model="name">
+            <input v-model="name"
+                   type="text"
+                   class="input-register"
+                   placeholder="input your name"
+                   required>
             <label class="name-label">email</label>
-            <input type="email" class="input-register" placeholder="input your email" required>
+            <input v-model="email"
+                   type="email"
+                   class="input-register"
+                   placeholder="input your email"
+                   required>
             <label class="name-label">password</label>
-            <input type="password" class="input-register" placeholder="input your password" required>
+            <input v-model="password"
+                   type="password"
+                   class="input-register"
+                   placeholder="input your password"
+                   required>
             <a class="forgot" href="#" @click="login">Back</a>
             <input type="submit" name="submit" value="Register"/>
         </form>
@@ -15,12 +32,52 @@
 </template>
 
 <script>
+    import {instance} from "../../../../../mustagram/client/src/config/axiosConfig";
+    import message from "../message";
+
     export default {
         name: 'register',
+        data() {
+            return {
+                name: null,
+                email: null,
+                password: null,
+                header: null,
+                content: null,
+                color: "blue",
+                visibility: ""
+            }
+        },
         methods: {
             login() {
                 this.$emit("click")
-            }
+            },
+            registerUser() {
+                instance({
+                    method: 'post',
+                    url: '/user/register',
+                    data: {
+                        name: this.name,
+                        email: this.email,
+                        password: this.password
+                    }
+                }).then(({data}) => {
+                    console.log(data);
+                    this.header = "Success";
+                    this.content = "User successfully registered";
+                    this.color = "blue";
+                    this.visibility = true;
+                }).catch(err => {
+                    console.log(err);
+                    this.header = "Error";
+                    this.content = "Sign Up failed";
+                    this.color = "red";
+                    this.visibility = true;
+                });
+            },
+        },
+        components: {
+            message
         }
     }
 </script>
@@ -30,16 +87,16 @@
 
     #logo {
         text-transform: uppercase;
-        width:200px;
-        font-size:25px;
-        font-weight:600;
-        text-align:left;
-        color:lightgray;
-        -webkit-transition:0.2s ease all;
-        -moz-transition:0.2s ease all;
-        -ms-transition:0.2s ease all;
-        -o-transition:0.2s ease all;
-        transition:0.2s ease all;
+        width: 200px;
+        font-size: 25px;
+        font-weight: 600;
+        text-align: left;
+        color: lightgray;
+        -webkit-transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -ms-transition: 0.2s ease all;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
     }
 
     #logo:hover {
@@ -118,5 +175,7 @@
         color: darkgray;
     }
 
-
+    .message-box {
+        padding-bottom: 20px;
+    }
 </style>
