@@ -32,8 +32,9 @@
         name: "mainTaskbar",
         data() {
             return {
-                name: this.$cookies.get('name'),
+                name: this.$cookies.get('name')
             }
+        },
         methods: {
             logout() {
                 this.$cookies.remove("token");
