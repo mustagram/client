@@ -58,6 +58,7 @@
                     }
                 }).then(({data}) => {
                     console.log(data);
+                    this.$emit('update')
                 }).catch(err => {
                     console.log({err})
                 });
@@ -71,7 +72,7 @@
                     }
                 }).then(({data}) => {
                     console.log(data);
-                    this.$emit('likes')
+                    this.$emit('update')
                 }).catch(err => {
                     console.log({err})
                 });

@@ -4,7 +4,7 @@
               v-for="card, index in cards"
               :key="index"
               v-bind:card="card"
-              v-on:likes="listPost"
+              v-on:update="listPost"
         ></card>
     </sui-segment>
 </template>
