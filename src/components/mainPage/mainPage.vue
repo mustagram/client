@@ -1,16 +1,20 @@
 <template>
     <div>
         <main-navbar></main-navbar>
+        <content-container></content-container>
     </div>
 </template>
 
 <script>
     import mainNavbar from "./mainNavbar";
+    import contentContainer from "./content/contentContainer";
     import {instance} from "../../config/axiosConfig";
+    
     export default {
         name: "mainPage",
         components: {
-            mainNavbar
+            mainNavbar,
+            contentContainer
         },
         methods: {
             getPosts() {

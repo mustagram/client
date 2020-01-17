@@ -8,7 +8,7 @@
                 <i class="user link icon"></i><span>{{ name }}</span>
             </a>
             <a class="item" data-content="Add New Post">
-                <i class="plus link icon"></i>
+                <new-post></new-post>
             </a>
             <div class="right menu">
                 <div class="item">
@@ -26,12 +26,22 @@
 </template>
 
 <script>
+    import newPost from "./newPost";
+
     export default {
         name: "mainTaskbar",
         data() {
             return {
                 name: this.$cookies.get('name'),
             }
+        methods: {
+            logout() {
+                this.$cookies.remove("token");
+                location.reload();
+            }
+        },
+        components: {
+            newPost
         }
     }
 </script>

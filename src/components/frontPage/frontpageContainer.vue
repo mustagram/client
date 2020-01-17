@@ -37,10 +37,11 @@
 
 <style scoped>
     .backgroundContainer {
+        background-color: black;
         text-align: center;
-        position: relative;
-        /* z-index: -1; */
+        position: fixed;
         height: 100vh;
+        width: 100vw;
         background-image: linear-gradient(
                 to right bottom,
                 #c8cec7c7,
