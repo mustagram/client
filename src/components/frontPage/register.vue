@@ -67,6 +67,10 @@
                     this.content = "User successfully registered";
                     this.color = "blue";
                     this.visibility = true;
+                    this.name = "";
+                    this.email = "";
+                    this.password = "";
+                    this.login();
                 }).catch(err => {
                     console.log(err);
                     this.header = "Error";

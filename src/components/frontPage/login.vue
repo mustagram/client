@@ -52,6 +52,7 @@
                     this.content = "User successfully login";
                     this.color = "blue";
                     this.visibility = true;
+                    location.reload();
                 }).catch(err => {
                     console.log(err.response.data);
                     this.header = "Error";
