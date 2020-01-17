@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseURLProd = 'http://35.184.99.60:3000';
+const baseURLProd = 'http://35.238.126.133';
 const baseURLDev = 'http://localhost:3000';
 
 const instance = axios.create({
-    baseURL: baseURLDev
+    baseURL: baseURLProd
 });
 
 module.exports = {
