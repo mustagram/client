@@ -1,7 +1,7 @@
 <template>
     <div>
-        <main-navbar></main-navbar>
-        <content-container></content-container>
+        <main-navbar @listData="getPosts"></main-navbar>
+        <content-container v-bind:newData="newData"></content-container>
     </div>
 </template>
 
@@ -9,12 +9,13 @@
     import mainNavbar from "./mainNavbar";
     import contentContainer from "./content/contentContainer";
     import {instance} from "../../config/axiosConfig";
-    
+
     export default {
         name: "mainPage",
         components: {
             mainNavbar,
-            contentContainer
+            contentContainer,
+            newData: []
         },
         methods: {
             getPosts() {
@@ -26,16 +27,13 @@
                     }
                 }).then(({data}) => {
                     console.log(data);
-                    
+                    this.newData = data
                 }).catch(err => {
                     console.log(err);
                     this.$cookies.remove('token');
                     location.reload();
                 });
             }
-        },
-        created() {
-            this.getPosts();
         }
     }
 </script>

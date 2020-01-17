@@ -2,7 +2,9 @@
     <sui-segment>
         <card id="card"
               v-for="card, index in cards"
-              :key="index"></card>
+              :key="index"
+              v-bind:card="card"
+        ></card>
     </sui-segment>
 </template>
 
@@ -34,6 +36,9 @@
                     console.log({err})
                 });
             },
+        },
+        props: {
+            newData: Array
         },
         mounted() {
             this.listPost()

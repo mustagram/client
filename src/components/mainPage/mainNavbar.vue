@@ -8,7 +8,7 @@
                 <i class="user link icon"></i><span>{{ name }}</span>
             </a>
             <a class="item" data-content="Add New Post">
-                <new-post></new-post>
+                <new-post @listData="listData"></new-post>
             </a>
             <div class="right menu">
                 <div class="item">
@@ -39,6 +39,9 @@
             logout() {
                 this.$cookies.remove("token");
                 location.reload();
+            },
+            listData(){
+                this.$emit('listData')
             }
         },
         components: {
