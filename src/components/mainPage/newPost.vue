@@ -97,7 +97,9 @@
                     }
                 }).then(({data}) => {
                     console.log(data);
-                    this.open = false
+                    this.open = false;
+                    this.$emit('listData');
+                    location.reload()
                 }).catch(err => {
                     console.log({err})
                 });

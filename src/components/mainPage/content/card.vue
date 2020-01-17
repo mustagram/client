@@ -1,12 +1,14 @@
 <template>
     <div class="ui card">
         <div class="content">
-            <div class="right floated meta">14h</div>
-            <img class="ui avatar image" src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg">
-            Elliot
+            <img class="ui avatar image"
+                 src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg">
+            {{ card.user.email }}
+            <i class="share icon"></i>
         </div>
         <div class="image">
-            <img src="https://images.unsplash.com/photo-1562307030-2c286048cfd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=790&q=80">
+            <!--            <img src="https://images.unsplash.com/photo-1562307030-2c286048cfd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=790&q=80">-->
+            <img :src="card.file">
         </div>
         <div class="content">
     <span class="right floated">
@@ -27,10 +29,16 @@
 
 <script>
     export default {
-        name: "card"
+        name: "card",
+        props: {
+            card: Object
+        }
     }
 </script>
 
 <style scoped>
-
+    .icon {
+        cursor: pointer;
+        float: right;
+    }
 </style>
