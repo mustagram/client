@@ -47,6 +47,7 @@
                     }
                 }).then(({data}) => {
                     console.log(data);
+                    this.$cookies.set("token", data.token);
                     this.header = "Success";
                     this.content = "User successfully login";
                     this.color = "blue";
@@ -161,7 +162,8 @@
     .login:hover {
         color: darkgray;
     }
-    .message-box{
+
+    .message-box {
         padding-bottom: 20px;
     }
 </style>
