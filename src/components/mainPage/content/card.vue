@@ -4,7 +4,7 @@
             <img class="ui avatar image"
                  src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg">
             {{ card.user.email }}
-             <a :href="this.url">
+             <a id="share" :href="this.url">
             <i class="share icon"></i>
              </a>
         </div>
