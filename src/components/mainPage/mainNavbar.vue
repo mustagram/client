@@ -39,7 +39,7 @@
             logout() {
                 this.$cookies.remove("token");
                 location.reload();
-            },
+                 },
             listData(){
                 this.$emit('listData')
             }
