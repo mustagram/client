@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import {instance} from "../../../../../mustagram/client/src/config/axiosConfig";
+    import {instance} from "../../config/axiosConfig";
     import message from "../message";
 
     export default {
