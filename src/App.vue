@@ -1,15 +1,27 @@
 <template>
     <div>
-        <Container></Container>
+        <Container v-if="!isLogin"></Container>
+        <main-page v-if="isLogin"></main-page>
     </div>
 </template>
 
 <script>
-import Container from "./components/frontPage/frontpageContainer"
+    import Container from "./components/frontPage/frontpageContainer"
+    import mainPage from "./components/mainPage/mainPage";
+
     export default {
         name: "App",
+        computed: {
+            isLogin() {
+                if (this.$cookies.isKey("token")) {
+                    return true
+                }
+                return false
+            }
+        },
         components: {
-           Container
+            Container,
+            mainPage
         }
     }
 </script>
