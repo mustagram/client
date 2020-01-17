@@ -1,11 +1,16 @@
 <template>
     <div class="login">
-        <form>
+        <message v-bind:header="header"
+                 v-bind:content="content"
+                 v-bind:color="color"
+                 v-bind:visibility="visibility"
+                 class="message-box"></message>
+        <form v-on:submit.prevent="loginUser">
             <h3 id="logo">login</h3>
             <label class="name-label">email</label>
-            <input type="email" class="input-login" placeholder="input your email" required>
+            <input v-model="email" type="email" class="input-login" placeholder="input your email" required>
             <label class="name-label">password</label>
-            <input type="password" class="input-login" placeholder="input your password" required>
+            <input v-model="password" type="password" class="input-login" placeholder="input your password" required>
             <a class="forgot" href="#" @click="register">register</a>
             <input type="submit" name="submit" value="Log In"/>
         </form>
@@ -13,12 +18,50 @@
 </template>
 
 <script>
+    import {instance} from "../../../../../mustagram/client/src/config/axiosConfig";
+    import message from "../message";
+
     export default {
         name: "login",
+        data() {
+            return {
+                email: null,
+                password: null,
+                header: null,
+                content: null,
+                color: "blue",
+                visibility: ""
+            }
+        },
         methods: {
             register() {
                 this.$emit("register")
-            }
+            },
+            loginUser() {
+                instance({
+                    method: 'post',
+                    url: '/user/login',
+                    data: {
+                        email: this.email,
+                        password: this.password
+                    }
+                }).then(({data}) => {
+                    console.log(data);
+                    this.header = "Success";
+                    this.content = "User successfully login";
+                    this.color = "blue";
+                    this.visibility = true;
+                }).catch(err => {
+                    console.log(err.response.data);
+                    this.header = "Error";
+                    this.content = err.response.data.message;
+                    this.color = "red";
+                    this.visibility = true;
+                });
+            },
+        },
+        components: {
+            message
         }
     }
 </script>
@@ -27,7 +70,7 @@
     @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap");
 
     .login {
-        font-family: "Open Sans";
+        font-family: "Open Sans", serif;
     }
 
     #logo {
@@ -117,5 +160,8 @@
     .forgot:hover,
     .login:hover {
         color: darkgray;
+    }
+    .message-box{
+        padding-bottom: 20px;
     }
 </style>
