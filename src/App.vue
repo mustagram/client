@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Container from "./components/container" 
+import Container from "./components/frontPage/frontpageContainer"
     export default {
         name: "App",
         components: {
