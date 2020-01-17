@@ -3,22 +3,21 @@
         <div class="content">
             <img class="ui avatar image"
                  src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg">
-            {{ card.user.email }}
-             <a id="share" :href="this.url">
-            <i class="share icon"></i>
-             </a>
+            {{ card.user.name }}
+            <a id="share" :href="this.url">
+                <i class="share icon"></i>
+            </a>
         </div>
-        <div class="image">
-            <!--            <img src="https://images.unsplash.com/photo-1562307030-2c286048cfd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=790&q=80">-->
+        <div class="image" id="img-post">
             <img :src="card.file">
         </div>
         <div class="content">
-    <span class="right floated" @click="addLike(card._id)">
-      <i class="heart outline like icon"></i>
-      {{ card.likes.length }} likes
-    </span>
+        <span class="right floated" @click="addLike(card._id)">
+          <i class="heart outline like icon"></i>
+          {{ card.likes.length }} likes
+        </span>
             <i class="comment icon"></i>
-            comments
+            {{ card.comments.length }} comments
         </div>
         <div class="extra content">
             <div class="ui large transparent left icon input">
@@ -46,9 +45,9 @@
         props: {
             card: Object,
         },
-        data(){
+        data() {
             return {
-                url : `https://social-plugins.line.me/lineit/share?url=${this.card.file}&text=from= ${this.card.user.email}&from=line_scheme`
+                url: `https://social-plugins.line.me/lineit/share?url=${this.card.file}&text=from= ${this.card.user.email}&from=line_scheme`
             }
         },
         methods: {
@@ -92,5 +91,10 @@
     #share {
         cursor: pointer;
         float: right;
+    }
+
+    #img-post {
+        overflow: hidden;
+        height: 250px;
     }
 </style>
