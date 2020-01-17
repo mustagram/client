@@ -48,6 +48,7 @@
                 }).then(({data}) => {
                     console.log(data);
                     this.$cookies.set("token", data.token);
+                    this.$cookies.set("name", data.name);
                     this.header = "Success";
                     this.content = "User successfully login";
                     this.color = "blue";

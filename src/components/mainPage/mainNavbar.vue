@@ -5,7 +5,7 @@
                 Mustagram
             </a>
             <a class="item">
-                <i class="user link icon"></i>
+                <i class="user link icon"></i><span>{{ name }}</span>
             </a>
             <a class="item" data-content="Add New Post">
                 <i class="plus link icon"></i>
@@ -27,7 +27,12 @@
 
 <script>
     export default {
-        name: "mainTaskbar"
+        name: "mainTaskbar",
+        data() {
+            return {
+                name: this.$cookies.get('name'),
+            }
+        }
     }
 </script>
 
