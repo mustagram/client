@@ -27,7 +27,13 @@
 
 <script>
     export default {
-        name: "mainTaskbar"
+        name: "mainTaskbar",
+        methods: {
+            logout() {
+                this.$cookies.remove("token");
+                location.reload();
+            }
+        }
     }
 </script>
 
