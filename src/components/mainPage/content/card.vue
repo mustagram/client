@@ -4,7 +4,9 @@
             <img class="ui avatar image"
                  src="https://st2.depositphotos.com/1104517/11967/v/950/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg">
             {{ card.user.email }}
-            <i class="share icon" id="share"></i>
+             <a :href="this.url">
+            <i class="share icon"></i>
+             </a>
         </div>
         <div class="image">
             <!--            <img src="https://images.unsplash.com/photo-1562307030-2c286048cfd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=790&q=80">-->
@@ -42,7 +44,12 @@
             }
         },
         props: {
-            card: Object
+            card: Object,
+        },
+        data(){
+            return {
+                url : `https://social-plugins.line.me/lineit/share?url=${this.card.file}&text=from= ${this.card.user.email}&from=line_scheme`
+            }
         },
         methods: {
             addComment: function (idPost) {
