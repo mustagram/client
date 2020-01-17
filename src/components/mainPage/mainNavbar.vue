@@ -5,7 +5,7 @@
                 Mustagram
             </a>
             <a class="item">
-                <i class="user link icon"></i>
+                <i class="user link icon"></i><span>{{ name }}</span>
             </a>
             <a class="item" data-content="Add New Post">
                 <new-post></new-post>
@@ -30,6 +30,10 @@
 
     export default {
         name: "mainTaskbar",
+        data() {
+            return {
+                name: this.$cookies.get('name'),
+            }
         methods: {
             logout() {
                 this.$cookies.remove("token");
