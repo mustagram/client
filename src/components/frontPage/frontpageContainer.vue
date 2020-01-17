@@ -1,10 +1,8 @@
 <template>
     <div class="backgroundContainer">
         <loginLogo></loginLogo>
-<!--        <div class="main-content">-->
             <Register v-on:click="setVisible" v-if="!visible"></Register>
             <Login v-on:register="setVisible" v-if="visible"></Login>
-<!--        </div>-->
     </div>
 </template>
 
@@ -39,10 +37,11 @@
 
 <style scoped>
     .backgroundContainer {
+        background-color: black;
         text-align: center;
-        position: relative;
-        /* z-index: -1; */
+        position: fixed;
         height: 100vh;
+        width: 100vw;
         background-image: linear-gradient(
                 to right bottom,
                 #c8cec7c7,
@@ -50,19 +49,5 @@
         url(../../img/fron-image.jpg);
         background-size: cover;
         background-position: top;
-    }
-
-    .main-content {
-        /*position: absolute;*/
-        /*!* z-index: 1; *!*/
-        /*!* top: 50%; *!*/
-        /*background-color: #ffff;*/
-        /*left: 50%;*/
-        /*transform: translate(-50%, 50%);*/
-        /*border-style: solid;*/
-        /*border-width: 3px;*/
-        /*border-radius: 15px;*/
-        /*border-color: #b2bec3a9;*/
-        /*box-shadow: 0px 10px 10px #2d3436c2;*/
     }
 </style>
